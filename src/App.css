@@ -7,6 +7,7 @@
 
 body{
   background-color: #111;
+  padding-bottom: 5%;
 }
 
 
@@ -22,9 +23,15 @@ body{
   font-weight: 700;
 }
 
+.search-container{
+  width: 90vw;
+  margin: 3vh 5vw;
+  display: flex;
+  justify-content: space-between;
+}
+
 .search-bar{
-  width: 95vw;
-  margin: 3vh 2.5vw;
+  width: 75%;
   padding: 2.5% 4%;
   background-color: #111;
   color: #3F59;
@@ -44,6 +51,30 @@ body{
   transition: 0.5s;
 }
 
+.search-btn{
+  width: 20%;
+  background-color: #3F5C;
+  color: #111;
+  border: none;
+  border-radius: 5px;
+}
+
+.movie-container{
+  width: 80vw;
+  margin: 3vh auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-poster{
+  width: 100%;
+}
+
+.movie-details{
+  padding: 5% 3%;
+  background-color: #222;
+  color: #FFF;
+}
 
 /* small mobile lanscape */
 
