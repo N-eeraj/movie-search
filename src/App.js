@@ -31,7 +31,7 @@ function App() {
 
       <div className="search-container">
         <input type="search" placeholder="Enter Film Name" onChange={(event) => {readTitle(event.target.value)}} className="search-bar"/>
-        <button className="search-btn" onClick={callAPI()}>Search</button>  
+        <button className="search-btn" onClick={callAPI}>Search</button>  
       </div>
       
 
