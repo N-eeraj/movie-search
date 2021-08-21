@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/movie-react-omdb/static/css/main.298c4b08.chunk.css",
-    "main.js": "/movie-react-omdb/static/js/main.0849c786.chunk.js",
-    "main.js.map": "/movie-react-omdb/static/js/main.0849c786.chunk.js.map",
+    "main.css": "/movie-react-omdb/static/css/main.20a9b021.chunk.css",
+    "main.js": "/movie-react-omdb/static/js/main.90baa600.chunk.js",
+    "main.js.map": "/movie-react-omdb/static/js/main.90baa600.chunk.js.map",
     "runtime-main.js": "/movie-react-omdb/static/js/runtime-main.52640ada.js",
     "runtime-main.js.map": "/movie-react-omdb/static/js/runtime-main.52640ada.js.map",
     "static/js/2.8ca68d46.chunk.js": "/movie-react-omdb/static/js/2.8ca68d46.chunk.js",
     "static/js/2.8ca68d46.chunk.js.map": "/movie-react-omdb/static/js/2.8ca68d46.chunk.js.map",
     "index.html": "/movie-react-omdb/index.html",
-    "static/css/main.298c4b08.chunk.css.map": "/movie-react-omdb/static/css/main.298c4b08.chunk.css.map",
+    "static/css/main.20a9b021.chunk.css.map": "/movie-react-omdb/static/css/main.20a9b021.chunk.css.map",
     "static/js/2.8ca68d46.chunk.js.LICENSE.txt": "/movie-react-omdb/static/js/2.8ca68d46.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.52640ada.js",
     "static/js/2.8ca68d46.chunk.js",
-    "static/css/main.298c4b08.chunk.css",
-    "static/js/main.0849c786.chunk.js"
+    "static/css/main.20a9b021.chunk.css",
+    "static/js/main.90baa600.chunk.js"
   ]
 }
