@@ -1,12 +1,16 @@
 *{
   margin: 0;
   padding: 0;
+  outline: none;
   box-sizing: border-box;
 }
 
 body{
   background-color: #111;
 }
+
+
+/* mobile portrait */
 
 .title{
   padding: 1.5vh 0;
@@ -18,6 +22,31 @@ body{
   font-weight: 700;
 }
 
+.search-bar{
+  width: 95vw;
+  margin: 3vh 2.5vw;
+  padding: 2.5% 4%;
+  background-color: #111;
+  color: #3F59;
+  font-size: 0.8rem;
+  border: 1px solid #FFF9;
+  border-radius: 5px;
+}
+.search-bar:hover{
+  border: 1px solid #FFFC;
+}
+.search-bar::placeholder{
+  color: #FFF7;
+}
+.search-bar:focus{
+  color: #3F5A;
+  border: 1px solid #3F59;
+  transition: 0.5s;
+}
+
+
+/* small mobile lanscape */
+
 @media (min-width: 548px) and (orientation: landscape)
 {
   .title{
@@ -25,7 +54,16 @@ body{
     padding: 2vh 0;
     padding-left: 7vw;
   }
+  
+  .search-bar{
+    margin: 5vh 2.5vw;
+    padding: 2% 3.2%;
+    font-size: 0.8rem;
+  }
 }
+
+
+/* large mobile lanscape */
 
 @media (min-width: 768px) and (orientation: landscape)
 {
@@ -34,23 +72,52 @@ body{
   }
 }
 
+
+/* tablet portrait */
+
 @media (min-width: 768px) and (orientation: portrait)
 {
   .title{
     font-size: 2.5rem;
   }
+  
+  .search-bar{
+    width: 80vw;
+    margin: 3vh 10vw;
+    padding: 2% 3.2%;
+    font-size: 1.2rem;
+  }
 }
 
-@media (min-width: 1440px)
+
+/* tablet landscape & laptop */
+
+@media (min-width: 1024px)
 {
   .title{
     font-size: 3rem;
   }
+  
+  .search-bar{
+    width: 60vw;
+    margin: 5vh 20vw;
+    padding: 2vh 3.2%;
+    font-size: 1.25rem;
+    border-radius: 30px;
+  }
 }
+
+
+/* larger screen */
 
 @media (min-width: 2560px)
 {
   .title{
     font-size: 3.6rem;
+  }
+  
+  .search-bar{
+    padding: 0.25% 3.2%;
+    font-size: 1.5rem;
   }
 }
