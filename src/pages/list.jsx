@@ -1,6 +1,9 @@
+// component imports
+import AppBar from '@components/AppBar'
+
 const list = () => {
   return (
-    <div>list</div>
+    <AppBar />
   )
 }
 
