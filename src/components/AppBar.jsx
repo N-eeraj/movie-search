@@ -1,5 +1,5 @@
-// react imports
-import { useState } from 'react'
+// react router imports
+import { useSearchParams } from 'react-router-dom'
 
 // headless ui imports
 import { Input } from '@headlessui/react'
@@ -19,15 +19,32 @@ const types = [
 ]
 
 const AppBar = () => {
-  const [selectedTypes, setSelectedTypes] = useState(types)
-  const [query, setQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams({
+    q: '',
+    t: JSON.stringify(types),
+  })
+
+  const query = searchParams.get('q') ?? ''
+  const selectedTypes = JSON.parse(searchParams.get('t')) ?? []
+
+  const handleUpdateQuery = (query, value) => {
+    setSearchParams(prev => {
+      prev.set(query, value)
+      return prev
+    }, { replace: true })
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log({query, selectedTypes})
+  }
 
   return (
     <div className="flex justify-end gap-x-3 md:py-4 md:px-7">
       <Listbox
         value={selectedTypes}
         multiple
-        onChange={value => value.length && setSelectedTypes(value)}>
+        onChange={value => value.length && handleUpdateQuery('t', JSON.stringify(value))}>
         <ListboxButton as={Button}>
           <FaFilter />
         </ListboxButton>
@@ -49,15 +66,17 @@ const AppBar = () => {
         </ListboxOptions>
       </Listbox>
 
-      <Input
-        value={query}
-        placeholder={`Search ${selectedTypes.join(', ')}`}
-        className="w-full max-w-sm py-1.5 px-3 text-white bg-white/5 border-none rounded-md ring-1 ring-white/10 focus:outline-none"
-        onChange={({ target }) => setQuery(target.value)}
-      />
-      <Button>
-        <FaSearch />
-      </Button>
+      <form className="flex gap-x-3 max-sm:w-full" onSubmit={handleSubmit}>
+        <Input
+          value={query}
+          placeholder={`Search ${selectedTypes.join(', ')}`}
+          className="flex-1 max-w-sm py-1.5 px-3 text-white bg-white/5 border-none rounded-md ring-1 ring-white/10 focus:outline-none"
+          onChange={({ target }) => handleUpdateQuery('q', target.value)}
+        />
+        <Button type="submit">
+          <FaSearch />
+        </Button>
+      </form>
     </div>
   )
 }
