@@ -2,13 +2,15 @@
 import { Outlet } from 'react-router-dom'
 
 // component imports
-import PoweredBy from '@components/PoweredBy'
+import Footer from '@components/Footer'
 
 const Layout = () => {
   return (
     <main className="flex flex-col justify-between min-h-dvh p-4 bg-primary">
-      <Outlet />
-      <PoweredBy />
+      <section>
+        <Outlet />
+      </section>
+      <Footer />
     </main>
   )
 }

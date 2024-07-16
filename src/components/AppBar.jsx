@@ -18,7 +18,7 @@ const types = [
   'Episode',
 ]
 
-const AppBar = () => {
+const AppBar = ({ onSearch }) => {
   const [searchParams, setSearchParams] = useSearchParams({
     q: '',
     t: JSON.stringify(types),
@@ -36,7 +36,8 @@ const AppBar = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log({query, selectedTypes})
+    if (query)
+      onSearch({ query, types: selectedTypes.map(type => type.toLowerCase()) })
   }
 
   return (
@@ -66,13 +67,13 @@ const AppBar = () => {
         </ListboxOptions>
       </Listbox>
 
-      <form className="flex gap-x-3 max-sm:w-full" onSubmit={handleSubmit}>
+      <form className="flex gap-x-3 w-full max-w-sm" onSubmit={handleSubmit}>
         <Input
           value={query}
+          type="search"
           placeholder={`Search ${selectedTypes.join(', ')}`}
-          className="flex-1 max-w-sm py-1.5 px-3 text-white bg-white/5 border-none rounded-md ring-1 ring-white/10 focus:outline-none"
-          onChange={({ target }) => handleUpdateQuery('q', target.value)}
-        />
+          className="flex-1 py-1.5 px-3 text-white bg-white/5 border-none rounded-md ring-1 ring-white/10 focus:outline-none"
+          onChange={({ target }) => handleUpdateQuery('q', target.value)} />
         <Button type="submit">
           <FaSearch />
         </Button>
