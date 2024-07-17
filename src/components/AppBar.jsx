@@ -15,6 +15,9 @@ import { FaFilter, FaCheck } from 'react-icons/fa6'
 // component imports
 import Button from '@components/Button'
 
+// util imports
+import { capitalize } from '@/formatter'
+
 const types = [
   'movie',
   'series',
@@ -66,9 +69,7 @@ const AppBar = ({ onSearch }) => {
             <ListboxOption key={type} value={type} className="group flex items-center gap-2 py-1.5 px-3 text-white text-sm/6 rounded-lg cursor-pointer data-[focus]:bg-black/20">
               <FaCheck className="invisible size-4 fill-white group-data-[selected]:visible" />
               <div className="text-sm/6 text-white">
-                {/* capitalizing lowercase "type" string */}
-                {type.charAt(0).toUpperCase()}
-                {type.slice(1)}
+                {capitalize(type)}
               </div>
             </ListboxOption>
           ))}
