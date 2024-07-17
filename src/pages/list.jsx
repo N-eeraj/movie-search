@@ -1,5 +1,6 @@
 // component imports
 import AppBar from '@components/AppBar'
+import MovieList from '@components/Movie/List'
 
 const list = () => {
   const handleSearch = ({ query, types }) => {
@@ -7,8 +8,13 @@ const list = () => {
     console.log(types)
   }
 
+  const { Search: movies, totalResults } = data
+
   return (
-    <AppBar onSearch={handleSearch} />
+    <>
+      <AppBar onSearch={handleSearch} />
+      <MovieList movies={movies} />
+    </>
   )
 }
 

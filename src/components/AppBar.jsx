@@ -1,3 +1,6 @@
+// react imports
+import { useEffect } from 'react'
+
 // react router imports
 import { useSearchParams } from 'react-router-dom'
 
@@ -20,7 +23,7 @@ const types = [
 
 const AppBar = ({ onSearch }) => {
   const [searchParams, setSearchParams] = useSearchParams({
-    q: '',
+    q: 'Dragon Ball',
     t: JSON.stringify(types),
   })
 
@@ -35,10 +38,14 @@ const AppBar = ({ onSearch }) => {
   }
 
   const handleSubmit = event => {
-    event.preventDefault()
+    event?.preventDefault()
     if (query)
       onSearch({ query, types: selectedTypes.map(type => type.toLowerCase()) })
   }
+
+  useEffect(() => {
+    handleSubmit()
+  }, [])
 
   return (
     <div className="flex justify-end gap-x-3 md:py-4 md:px-7">
