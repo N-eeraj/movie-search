@@ -53,7 +53,7 @@ const movie = () => {
 
       <section className="flex flex-col gap-y-4 md:w-10/12 max-w-screen-lg my-5 mx-auto px-2">
         <div className="flex flex-col gap-y-2">
-          <div className="flex justify-between items-end flex-wrap gap-y-2">
+          <div className="flex justify-between items-end flex-wrap gap-2">
             <h1 className="text-light text-5xl">
               {Title}
             </h1>
