@@ -1,5 +1,5 @@
 // react router imports
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 // tanstack query imports
 import { useQuery } from '@tanstack/react-query'
@@ -15,6 +15,7 @@ import Error from '@components/Error'
 
 const movie = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
 
   const fetchMovie = async () => {
     const apiKey = import.meta.env.VITE_API_KEY
@@ -44,11 +45,9 @@ const movie = () => {
 
   return (
     <>
-      <Link to="/">
-        <Button className="aspect-square">
-          <IoArrowBackOutline className="text-xl" />
-        </Button>
-      </Link>
+      <Button className="aspect-square" onClick={() => navigate(-1)}>
+        <IoArrowBackOutline className="text-xl" />
+      </Button>
 
       {view}
     </>

@@ -27,15 +27,15 @@ const types = [
 const AppBar = ({ onSearch }) => {
   const [searchParams, setSearchParams] = useSearchParams({
     q: 'Dragon Ball',
-    t: 'movie',
+    t: 'series',
   })
 
   const query = searchParams.get('q') ?? ''
   const selectedType = searchParams.get('t') ?? ''
 
-  const handleUpdateQuery = (query, value) => {
+  const handleUpdateQuery = (queryKey, value) => {
     setSearchParams(prev => {
-      prev.set(query, value)
+      prev.set(queryKey, value)
       return prev
     }, { replace: true })
   }
@@ -43,11 +43,11 @@ const AppBar = ({ onSearch }) => {
   const handleSubmit = event => {
     event?.preventDefault()
     if (query)
-      onSearch({ query, types })
+      onSearch({ query, type: selectedType })
   }
 
   useEffect(() => {
-    handleSubmit()
+    onSearch({ query, type: selectedType })
   }, [])
 
   return (
