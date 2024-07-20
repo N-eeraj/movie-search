@@ -9,6 +9,7 @@ import AppBar from '@components/AppBar'
 import MovieList from '@components/Movie/List'
 import Loading from '@components/Loading'
 import Error from '@components/Error'
+import Pagination from '@components/Pagination'
 
 const list = () => {
   const [search, setSearch] = useState(null)
@@ -35,6 +36,7 @@ const list = () => {
     data,
     error,
     isFetching,
+    isSuccess,
     isError,
   } = useQuery({
     queryKey: ['movies', { search, type, page }],
@@ -49,10 +51,19 @@ const list = () => {
   return (
     <>
       <AppBar onSearch={handleSearch} />
-      {isError && <Error message={typeof error === 'string' && error} />}
-      <MovieList movies={movies} />
       {isFetching && <Loading className="w-12 mx-auto" />}
-      Showing page: {page} of {pageCount}
+      {isError && <Error message={typeof error === 'string' && error} />}
+      {
+        (!isFetching && isSuccess) &&
+        <>
+          <MovieList movies={movies} />
+          <Pagination
+            page={page}
+            pageCount={pageCount}
+            className="max-w-screen-xl mx-auto sm:px-12 py-5"
+            onPageChange={page => setPage(page)} />
+        </>
+      }
     </>
   )
 }
