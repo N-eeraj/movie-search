@@ -59,7 +59,7 @@ const list = () => {
           <MovieList movies={movies} />
           <Pagination
             page={page}
-            pageCount={pageCount}
+            totalResults={totalResults}
             className="max-w-screen-xl mx-auto sm:px-12 py-5"
             onPageChange={page => setPage(page)} />
         </>

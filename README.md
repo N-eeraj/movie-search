@@ -10,3 +10,4 @@ Movie Search is a simple web application that lets users search for movies, seri
 - [Headless UI](https://headlessui.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [rc-pagination](https://pagination-react-component.vercel.app/)
