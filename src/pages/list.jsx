@@ -11,13 +11,16 @@ import Loading from '@components/Loading'
 import Error from '@components/Error'
 import Pagination from '@components/Pagination'
 
+// util imports
+import { capitalize } from '@/formatter'
+
 const list = () => {
   const [search, setSearch] = useState(null)
   const [type, setType] = useState(null)
   const [page, setPage] = useState(1)
 
   const handleSearch = ({ query, type }) => {
-    setSearch(query)
+    setSearch(query.trim())
     setType(type)
     setPage(1)
   }
@@ -28,7 +31,7 @@ const list = () => {
     const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=${type}&page=${page}`)
     const data = await response.json()
     if (data.Response === 'False')
-      throw `${type} not found`
+      throw `${capitalize(type)} not found`
     return data
   }
 
@@ -43,10 +46,10 @@ const list = () => {
     queryFn: fetchMovies,
     initialData: { Search: [], totalResults: 0 },
     retry: 0,
+    refetchOnWindowFocus: false,
   })
 
   const { Search: movies, totalResults } = data
-  const pageCount = Math.ceil(totalResults / 10)
 
   return (
     <>

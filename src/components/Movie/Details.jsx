@@ -43,18 +43,21 @@ const Details = ({
           <h1 className="text-light text-5xl">
             {Title}
           </h1>
-          <div className="flex items-center gap-x-2">
-            <span className="flex items-center gap-x-1">
-              <strong className="text-light">
-                {imdbRating}
-              </strong>
-              /10
-              <FaStar className="fill-accent" />
-            </span>
-            <small>
-              ({imdbVotes})
-            </small>
-          </div>
+          {
+            imdbRating !== 'N/A' &&
+            <div className="flex items-center gap-x-2">
+              <span className="flex items-center gap-x-1">
+                <strong className="text-light">
+                  {imdbRating}
+                </strong>
+                /10
+                <FaStar className="fill-accent" />
+              </span>
+              <small>
+                ({imdbVotes})
+              </small>
+            </div>
+          }
         </div>
 
         <div className="flex gap-x-3">
@@ -68,15 +71,13 @@ const Details = ({
         <img src={Poster} alt={Title} className="max-sm:max-w-72 rounded-md" />
 
         <div className="flex flex-col items-center gap-y-4">
-          <div className="flex gap-x-2 w-full">
+          <div className="flex max-sm:justify-center gap-x-2 w-full">
             { genreList.map((genre, index) => <Chip key={index}>
               {genre}
             </Chip>) }
           </div>
 
-          <p>
-            {Plot}
-          </p>
+          {Plot !== 'N/A' && <p>{Plot}</p>}
 
           <div className="flex flex-col gap-y-1 w-full">
             {

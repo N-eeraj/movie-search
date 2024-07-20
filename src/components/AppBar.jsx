@@ -1,5 +1,5 @@
 // react imports
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 // react router imports
 import { useSearchParams } from 'react-router-dom'
@@ -30,6 +30,8 @@ const AppBar = ({ onSearch }) => {
     t: 'series',
   })
 
+  const inputField = useRef(null)
+
   const query = searchParams.get('q') ?? ''
   const selectedType = searchParams.get('t') ?? ''
 
@@ -48,6 +50,15 @@ const AppBar = ({ onSearch }) => {
 
   useEffect(() => {
     onSearch({ query, type: selectedType })
+
+    const handleKeydown = event => {
+      if (event.key !== '/') return
+      event.preventDefault()
+      inputField.current.focus()
+    }
+    document.addEventListener('keydown', handleKeydown)
+
+    return () => document.removeEventListener('keydown', handleKeydown)
   }, [])
 
   return (
@@ -78,6 +89,7 @@ const AppBar = ({ onSearch }) => {
 
       <form className="flex gap-x-3 w-full max-w-sm" onSubmit={handleSubmit}>
         <Input
+          ref={inputField}
           value={query}
           type="search"
           placeholder={`Search ${selectedType}`}

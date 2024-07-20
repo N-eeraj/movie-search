@@ -22,16 +22,17 @@ const BasePagination = ({ page, totalResults, className, onPageChange }) => {
         Showing {from} - {to} of {totalResults}
       </span>
 
-      <Pagination
-        defaultCurrent={page}
-        total={totalResults}
-        itemRender={pageButton}
-        nextIcon={to != totalResults && <Button className="h-full"><BiSolidRightArrow className="text-xs" /></Button>}
-        prevIcon={from !== 1 && <Button className="h-full"><BiSolidLeftArrow className="text-xs" /></Button>}
-        showTitle={false}
-        className="flex justify-end gap-x-2"
-        onChange={onPageChange}
-      />
+      { totalResults > 10 &&
+        <Pagination
+          defaultCurrent={page}
+          total={totalResults}
+          itemRender={pageButton}
+          nextIcon={to != totalResults && <Button className="h-full"><BiSolidRightArrow className="text-xs" /></Button>}
+          prevIcon={from !== 1 && <Button className="h-full"><BiSolidLeftArrow className="text-xs" /></Button>}
+          showTitle={false}
+          className="flex justify-end gap-x-2"
+          onChange={onPageChange} />
+      }
     </div>
   )
 }
