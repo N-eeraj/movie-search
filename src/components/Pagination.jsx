@@ -19,7 +19,7 @@ const BasePagination = ({ page, totalResults, className, onPageChange }) => {
   return (
     <div className={`flex max-sm:flex-col justify-between items-center sm:items-baseline gap-y-2 ${className}`}>
       <span>
-        Showing {from} - {to} of {totalResults}
+        Showing {from} {to !== 1 && `- ${to}` } of {totalResults}
       </span>
 
       { totalResults > 10 &&

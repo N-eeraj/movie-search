@@ -49,7 +49,8 @@ const AppBar = ({ onSearch }) => {
   }
 
   useEffect(() => {
-    onSearch({ query, type: selectedType })
+    const page = searchParams.get('p') ?? 1
+    onSearch({ query, type: selectedType, page })
 
     const handleKeydown = event => {
       if (event.key !== '/') return

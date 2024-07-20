@@ -1,6 +1,9 @@
 // react imports
 import { useState } from 'react'
 
+// react router imports
+import { useSearchParams } from 'react-router-dom'
+
 // tanstack query imports
 import { useQuery } from '@tanstack/react-query'
 
@@ -11,28 +14,25 @@ import Loading from '@components/Loading'
 import Error from '@components/Error'
 import Pagination from '@components/Pagination'
 
-// util imports
-import { capitalize } from '@/formatter'
+// import omdb fetch function
+import { useFetchList } from '@/useOMDb'
 
 const list = () => {
   const [search, setSearch] = useState(null)
   const [type, setType] = useState(null)
-  const [page, setPage] = useState(1)
 
-  const handleSearch = ({ query, type }) => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = Number(searchParams.get('p'))
+
+  const setPage = (page=1) =>  setSearchParams(prev => {
+      prev.set('p', page)
+      return prev
+    }, { replace: true })
+
+  const handleSearch = ({ query, type, page }) => {
     setSearch(query.trim())
     setType(type)
-    setPage(1)
-  }
-
-  const fetchMovies = async ({ queryKey }) => {
-    const { search, type, page } = queryKey[1]
-    const apiKey = import.meta.env.VITE_API_KEY
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=${type}&page=${page}`)
-    const data = await response.json()
-    if (data.Response === 'False')
-      throw `${capitalize(type)} not found`
-    return data
+    setPage(page)
   }
 
   const {
@@ -43,7 +43,7 @@ const list = () => {
     isError,
   } = useQuery({
     queryKey: ['movies', { search, type, page }],
-    queryFn: fetchMovies,
+    queryFn: useFetchList,
     initialData: { Search: [], totalResults: 0 },
     retry: 0,
     refetchOnWindowFocus: false,

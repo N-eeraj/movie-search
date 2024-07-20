@@ -13,22 +13,16 @@ import MovieDetails from '@components/Movie/Details'
 import Loading from '@components/Loading'
 import Error from '@components/Error'
 
+// import omdb fetch function
+import { useFetchData } from '@/useOMDb'
+
 const movie = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  const fetchMovie = async () => {
-    const apiKey = import.meta.env.VITE_API_KEY
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`)
-    const data = await response.json()
-    if (data.Response === 'False')
-      throw 'Movie not found'
-    return data
-  }
-
   const { data, status, error } = useQuery({
     queryKey: ['movie', id],
-    queryFn: fetchMovie,
+    queryFn: useFetchData,
     retry: 0,
   })
 
