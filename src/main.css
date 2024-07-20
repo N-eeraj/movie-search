@@ -17,3 +17,14 @@ input[type="search"]::-webkit-search-cancel-button {
 input[type="search"]::-webkit-search-cancel-button:hover {
   filter: brightness(2);
 }
+
+::selection {
+  @apply bg-accent text-primary;
+}
+
+::-webkit-scrollbar, ::-webkit-scrollbar, ::-webkit-scrollbar {
+  @apply w-1 bg-primary hover:bg-primary/80;
+}
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
+  @apply bg-accent hover:bg-light-extra rounded-full;
+}

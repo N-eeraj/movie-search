@@ -75,7 +75,7 @@ const AppBar = ({ onSearch }) => {
             gap: 7,
           }}
           transition
-          className="rounded-xl border border-white/25 bg-black/5 p-1 backdrop-blur-lg [--anchor-gap:var(--spacing-1)] focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 z-10">
+          className="p-1 bg-black/5 border border-white/25 rounded-xl backdrop-blur-lg [--anchor-gap:var(--spacing-1)] focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 z-10">
           {types.map(type => (
             <ListboxOption key={type} value={type} className="group flex items-center gap-2 py-1.5 px-3 text-white text-sm/6 rounded-lg cursor-pointer data-[focus]:bg-black/20">
               <FaCheck className="invisible size-4 fill-white group-data-[selected]:visible" />
